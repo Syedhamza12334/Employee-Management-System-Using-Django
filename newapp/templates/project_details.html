@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="list_employee mt-2">
+        <h3 class="text-center">{{project.title}}</h3>
+        <p>Title:{{project.title}}</p>
+        <p>Description:{{project.description}}</p>
+        <p>Start Date{{project.start_date}}</p>
+        <p>End Date{{project.end_date}}</p>
+
+        <p>Employees Assigned
+
+            <ui>
+
+                {% for employee in project.employees_assigned.all %}
+                <li> {{employee.name}}</li>
+
+            </ui>
+
+            {% endfor %}
+        </p>
+    </div>
+</div>
+
+
+
+{% endblock content %}

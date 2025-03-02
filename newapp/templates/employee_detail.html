@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row mt-3 shadow p-5" style="background-color: #d6d9d9;">
+    <h3 class="text-center">{{employee.name}}</h3>
+    <div class="col-sm-5 offset-sm-1">
+        <p>
+            <strong>
+                Name
+            </strong>
+            {{employee.name}}
+        </p>
+
+        <p>
+            <strong>
+                Email
+            </strong>
+            {{employee.email}}
+        </p>
+
+        <p>
+            <strong>
+                Mobile Numwer
+            </strong>
+            {{employee.mobile}}
+        </p>
+        <p>
+            <strong>
+                Skilss
+            </strong>
+            {{employee.skills}}
+        </p>  <p>
+            <strong>
+                Date Of Birth
+            </strong>
+            {{employee.date_of_birth}}
+        </p>
+
+        <p>
+            <strong>
+            State
+            </strong>
+            {{employee.state}}
+        </p>
+        <p>
+            <strong>
+             CIty
+            </strong>
+            {{employee.city}}
+        </p>
+
+
+
+        <p>
+            <strong>
+               Resume
+            </strong>
+          {% if employee.resume %}
+          <a href="{{employee.resume.url}}">Download Resume</a>
+      
+
+        {% else %}
+        No resume
+        {% endif %}
+    </p>
+
+
+    
+    <p>
+        <strong>
+           Video
+        </strong>
+      {% if employee.video %}
+      <a href="{{employee.video.url}}">Download Video</a>
+  
+
+    {% else %}
+    No video
+    {% endif %}
+</p>
+
+
+
+    </div>
+
+    <div class="col-sm-4">
+        <div class="row">
+   
+              {% if employee.profile_picture %}
+             
+             <img src="{{ employee.profile_picture.url }}" alt="profile_picture" class="img-fluid rounded-circle mt-0"style="width: 50%; height: 50%;>
+          
+        
+            {% endif %}
+    
+        </div>
+        <div class="row">
+   
+            {% if employee.video %}
+          <video controls class="embed-responsive-item" style="width: 100%; height: auto;" src="{{employee.video}}" type="video/mp4">
+            Your browser does not support video tag
+          </video>
+        
+      
+          {% endif %}
+  
+      </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="{% url 'employee_update' employee.id %}" class="btn btn-warning">Edit</a>
+    <form action={% url "delete_employee" employee.id %} method="post" class="d-inline">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+    <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+    <a href="/" class="btn btn-primary">Back</a>
+</div>
+
+{% endblock content %}

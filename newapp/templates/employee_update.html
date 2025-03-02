@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-6 offset-3">
+
+    <form action="" method="post" enctype="multipart/form-data" class="shadow bg-bg-light p-4 rounded">
+       {% csrf_token %}
+       {% if form.non_field_errors %}
+        {% for error in form.non_field_errors  %}
+        <span class="errorstyle">{{error}} </span>
+        {% endfor %}
+        {% endif %}
+
+        <br>
+        {% for field in form %}
+        <div class="m-3">
+            {{field.label_tag}}
+            {{field}}
+                {% for error in field.error %}
+                    <span class="errorstyle">{{error| striptags}} </span>
+                    {% endfor %}
+                </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-success">
+        
+
+
+
+    </form>
+</div>
+
+{% endblock content %}

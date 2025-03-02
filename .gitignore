@@ -1,0 +1,40 @@
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Django migrations and database files
+*.log
+*.sqlite3
+db.sqlite3
+
+# Static and media files
+static/
+media/
+
+# Environment configuration
+.env
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.bak
+*.swp
+
+# Docker
+.docker/
+
+# Coverage
+.coverage
+
+# System-specific files
+.DS_Store
+Thumbs.db
